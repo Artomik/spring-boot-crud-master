@@ -3,43 +3,45 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Musicas</title>
+    <title>Produtor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-<div th:switch="${musics}" class="container my-5">
+<div th:switch="${produtors}" class="container my-5">
     <div class="row">
         <div class="col-md-6">
-            <h2 th:case="null">No musics yet!</h2>
+            <h2 th:case="null">Sem produtor cadastrado!</h2>
             <div th:case="*">
-                <h2 class="my-5">Musics</h2>
+                <h2 class="my-5">Produtores</h2>
                 <table class="table table-striped table-responsive-md">
                     <thead>
                     <tr>
-                        <th>Genero</th>
-                        <th>Produtor</th>                        
-                        <th>Musica</th>
-                        <th>Gravadora</th>
+                        <th>Nome</th>
+                        <th>Data Nascimento</th>                        
+                        <th>Nacionalidade</th>
+                        <th>Estilo</th>
+                        <th>Descricao</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="music : ${musics}">
-                        <td th:text="${music.genero}"></td>
-                        <td th:text="${music.produtor}"></td>
-                        <td th:text="${music.musica}"></td>
-                        <td th:text="${music.gravadora}"></td>
-                        <td><a th:href="@{/edit/{id}(id=${music.id})}" class="btn btn-primary"><i class="fas fa-music-edit ml-2"></i></a></td>
-                        <td><a th:href="@{/delete/{id}(id=${music.id})}" class="btn btn-primary"><i class="fas fa-music-times ml-2"></i></a></td>
+                    <tr th:each="produtor : ${produtors}">
+                        <td th:text="${produtor.nome}"></td>
+                        <td th:text="${produtor.dtNascimento}"></td>
+                        <td th:text="${produtor.nacional}"></td>
+                        <td th:text="${produtor.estilo}"></td>
+                        <td th:text="${produtor.descricao}"></td>
+                        <td><a th:href="@{/edit/{id}(id=${produtor.id})}" class="btn btn-primary"><i class="fas fa-produtor-edit ml-2"></i></a></td>
+                        <td><a th:href="@{/delete/{id}(id=${produtor.id})}" class="btn btn-primary"><i class="fas fa-produtor-times ml-2"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-music-plus ml-2"></i></a></p>
+            <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-produtor-plus ml-2"></i></a></p>
         </div>
     </div>
 </div>
